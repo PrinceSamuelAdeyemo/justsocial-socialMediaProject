@@ -1,0 +1,160 @@
+{% extends 'header.html' %}
+{% load static %}
+
+
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'assets/css/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'assets/css/homepage.css' %}">
+
+
+    <title>Title</title>
+    {% endblock%}
+
+    {% block content %}
+    <div class="row">
+        <nav class="left_side col-md-3">
+            <div class="activity_panel bg-white for-border row m-0 my-3">
+                <div class="col-12 for-border">
+                    <h3 class="float-start">Activity</h3>
+                    <a class="float-end" href=""><h5>See all</h5></a>
+                </div>
+
+                <p><h3>Stories about you</h3></p>
+
+                <div class="col-12 userrelated_stories">
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+
+                </div>
+                <div class="new_stories col-12">
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                </div>
+            </div>
+            <div class="explore_panel bg-white for-border row m-0 my-3">
+                <div class="col-12 for-border">
+                    <h3 class="float-start">Explore</h3>
+                    <a class="float-end" href=""><h5>See all</h5></a>
+                </div>
+
+                <div class="col-12 userrelated_stories">
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+
+                </div>
+                <div class="new_stories col-12">
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="user_interactions p-0 col-md-6">
+            <div class="content_panel">
+                <div class="main-stories">
+                    <div class="story-content ">
+                    </div>
+                </div>
+                <div class="posts for-border">
+                    
+                    {% for post in posts reversed %}
+                    <div class="post for-border mt-3">
+                        <div class="profileaddress-post for-border p-2">
+                            <a class="nolink" href="/profile/{{post.username}}">
+                                <img class="profilepost-image float-start me-2 rounded-circle d-inline" src="">
+                                <div>
+                                    <span><p class="post-author">{{post.name}}</p></span>
+                                    <span><h6 class="post-author pb-2">@{{post.username}}</h6></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="post-content for-border px-2">
+                            <p>{{post.caption}}</p>
+                            {% if post.postImage.url is not None%}
+                            <a href="{{post.postImage.url}}" alt="No profile image">
+                                <img class="img-fluid post-image" src="{{post.postImage.url}}">
+                            </a>
+
+                            {% else %}
+                            
+                            {% endif %}
+                        </div>
+                        <div class="reactions p-2">
+                            <a href="/like-post?post_id={{post.id}}" class="btn"><img class="">👍</img></a>
+                            {% if post.noOfLikes == 0 %}
+                            <p></p>
+                            {% elif post.noOfLikes == 1 %}
+                            <p>Liked by {{post.noOfLikes}} person</p>
+                            {% else %}
+                            <p>Liked by {{post.noOfLikes}} people</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="right_side col-md-3">
+            <div class="messages_panel bg-white for-border row m-0 my-3">
+                <div class="col-12 for-border">
+                    <h3 class="float-start">Messsages</h3>
+                    <a class="float-end" href=""><h5>Icon</h5></a>
+                </div>
+
+                <div class="col-12 userrelated_stories">
+                    <input type="search" class="search search_bar">
+
+                </div>
+                <div class="new_stories col-12">
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                </div>
+            </div>
+            <div class="suggested bg-white for-border row m-0 my-3">
+                <div class="col-12 for-border">
+                    <h3 class="float-start">Suggested for you</h3>
+                    <a class="float-end" href=""><h5>See all</h5></a>
+                </div>
+
+                <div class="col-12 userrelated_stories">
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+                    <h5>Stories</h5>
+
+                </div>
+                <div class="new_stories col-12">
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                    <h5>New Stories</h5>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+    {% endblock %}
+
+ 

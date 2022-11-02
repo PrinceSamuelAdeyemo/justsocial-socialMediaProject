@@ -1,0 +1,98 @@
+{% extends 'header.html' %}
+{% load static %}
+<!--
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Samuel Adeyemo">
+    <meta name="application-name" content="Sign in website">
+    <meta name="keyword" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+-->
+
+    {% block head %}
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'assets/css/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'assets/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/signin.css' %}">
+    
+    <title>Sign up</title>
+
+    {% endblock %}
+    <!--
+</head>
+
+<body>
+<div class="container-fluid overflow-hidden allbody">
+    <nav class="navbar nav navbar-expand-md navbar-light m-0 p-0" role="navigation">
+        <div class="container-fluid bg-white">
+            <a class="navbar-brand bg-white" href=""><h3>Just Social</h3></a>
+            <button class="navbar-toggler btn" type="button" data-bs-target="#navbar_links" data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse row collapse d-md-flex justify-content-md-center" id="navbar_links">
+                <ul class="navbar-nav col-md-8">
+                    <li class="nav-item w-75 mx-auto">
+                        <input class="search search_bar" type="search" placeholder="Search for creators, inspirations and projects">
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav col-md-2">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="">Post</a>
+                    </li>
+                    <li class="nav-item float-start">
+                        <a class="nav-link btn" href="">Sign in</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+-->
+    {% block content %}
+
+    <div class="main-container p-md-5">
+        <div class="centered-div m-auto">
+            <div class="form-container for-border">
+                <form class="form-horizontal" action="" method="post" role="form">
+                    {% csrf_token %}
+                    <div>
+                        {% for message in messages%}
+                        <h5 class="text-danger text-center"> {{ message }} </h5>
+                    {% endfor%}
+                    </div>
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" type="tel" id="username" class="form-control">
+
+                    <label for="password" class="form-label">Password</label>
+                    <input name="password" type="password" id="password" class="form-control">
+
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+
+                    <div class="form-group text-center mt-2">
+                        <p class="form-control-plaintext">Haven't Registered? <span><a class="signup-link" href="/signup">Sign Up</a></span></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+<!--
+</div>
+</body>
+
+</html>
+-->

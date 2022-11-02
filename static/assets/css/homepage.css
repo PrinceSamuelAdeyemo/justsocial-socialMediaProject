@@ -1,0 +1,72 @@
+/* General */
+.nolink{
+    text-decoration: none;  
+  }
+.for-border{
+      border-radius: 0.5rem;
+  }
+  
+
+/* Style for the whole page */
+.allbody{
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+/* ***********for the middle (content panel) ******************** */
+/* For the whole middel content */
+.user_interactions{
+    background-color: whitesmoke;
+}
+
+.content_panel{
+    padding: 0 4rem !important;
+}
+/*
+.search_bar{
+    width: 100%!important;
+    border-radius: 0.5rem;
+}
+*/
+/*.scroll-y:focus, .scroll-y:active
+.scroll-y:focus, .scroll-y:active{
+    overflow-y: scroll;
+    height: 50rem;
+}
+*/
+.post{
+    background-color: white;
+}
+
+.post-author{
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+.profileaddress-post{
+    border-radius: none
+}
+
+.profilepost-image{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+.post-content{
+    background-color: inherit;
+    overflow-wrap: break-word;
+}
+
+.post-image{
+
+    width: 100%;
+    max-height: 40rem;
+    height: 25rem;
+
+}
+
+

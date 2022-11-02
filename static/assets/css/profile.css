@@ -1,0 +1,139 @@
+*{
+    box-sizing: border-box;
+}
+body, .div-profile{
+    padding: 0;
+    margin: 0;
+}
+
+.top-profile{
+    height: 65vh;
+    width: 100%;
+    position: relative;
+}
+
+.div-cover-photo{
+    height: inherit;
+}
+
+.top-profile .div-cover-photo .cover-photo{
+    background-size: 100%;
+    width: 100%;
+    height: inherit;
+
+}
+
+
+.profile-content{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: inherit;
+}
+
+.profilepost-image{
+    width: 2rem;
+    height: 2rem;
+}
+
+.profile-content .profile-minicontent{
+    float: left;
+}
+
+/* This is for the styling of the profile section navigation
+############### Ends below
+ */
+.profileImg{
+    float: left;
+    height: 13rem;
+    margin: 2rem 0 0 5rem;
+    border-radius: 0.5rem;
+}
+
+.backtohome{
+    float: left;
+    display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+.white-bold-text{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 1.5rem;
+}
+.follow{
+
+    background-color: royalblue !important;
+}
+
+.displayusername{
+    position: absolute;
+    left: 19rem;
+    top: 13rem;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.post-followers-more{
+    width: 75%;
+    float: right;
+    margin-top: 7rem;
+}
+
+/* The profile section styling navigation ends here
+ */
+/*
+.div-bio{
+    background-color: #6a1a21;
+}
+*/
+.div-bio-text{
+    width: 60%;
+    margin: 6rem auto;
+    word-break: normal;
+}
+
+
+.div-previous-photos{
+    width: 80%;
+    background-color: white;
+    /*margin-top: 10rem;*/
+    margin: 10rem auto;
+    border-radius: 1rem;
+    padding: 0.3rem;
+}
+.div-previous-photo{
+    float: left;
+    width: 20%;
+    padding: 0.3rem;
+    margin: 0;
+    background-color: inherit;
+
+}
+.previous-photo{
+    width: 100%;
+}
+
+.clear{
+    clear: left
+}
+
+.post-contents-container{
+    width: 80%;
+}
+
+.post-contents{
+    background-color: blue;
+    margin-top: 0.5rem;
+    
+}
+
+/*
+color: white;
+font-weight: bold;
+font-size: 1.3rem;
+*/

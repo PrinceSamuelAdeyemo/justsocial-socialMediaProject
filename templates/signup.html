@@ -1,0 +1,118 @@
+{% extends 'header.html'%}
+<!--
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Samuel Adeyemo">
+    <meta name="application-name" content="Sign in website">
+    <meta name="keyword" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'assets/css/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'assets/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/signup.css' %}">
+
+    <title>Title</title>
+</head>
+
+<body>
+<div class="container-fluid overflow-hidden allbody">
+    <nav class="navbar nav navbar-expand-md navbar-light m-0 p-0 bg-primary" role="navigation">
+        <div class="container-fluid bg-light">
+            <a class="navbar-brand bg-white" href=""><h3>Just Social</h3></a>
+            <button class="navbar-toggler btn" type="button" data-bs-target="#navbar_links" data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse row collapse d-md-flex justify-content-md-center" id="navbar_links">
+                <ul class="navbar-nav col-md-8">
+                    <li class="nav-item w-75 mx-auto">
+                        <input class="search search_bar" type="search" placeholder="Search for creators, inspirations and projects">
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav col-md-2 bg-danger">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="">Post</a>
+                    </li>
+                    <li class="nav-item float-start bg-primary">
+                        <a class="nav-link btn" href="">Sign in</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+-->
+
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'assets/css/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'assets/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/signin.css' %}">
+
+    <title>Sign up</title>
+    {% endblock %}
+
+    {% block content%}
+
+    <div class="main-container p-md-5">
+        <div class="centered-div m-auto">
+            <div class="form-container for-border">
+                <form class="form-horizontal" action="" method="post" role="form">
+                    {% csrf_token %}
+                    <div>
+                        {% for message in messages%}
+                        <h5 class="text-danger text-center"> {{ message }} </h5>
+                    {% endfor%}
+                    </div>
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input name="firstName" type="text" id="first_name" class="form-control" required>
+
+                    <label for="middle_name" class="form-label">Middle Name</label>
+                    <input name="middleName" type="text" id="middle_name" class="form-control" required>
+
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input name="lastName" type="text" id="last_name" class="form-control" required>
+
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" type="tel" id="username" class="form-control" required>
+
+                    <label for="password" class="form-label">Password</label>
+                    <input name="password" type="password" id="password" class="form-control" required>
+
+                    <label for="password2" class="form-label">Confirm Password</label>
+                    <input name="password2" type="password" id="password2" class="form-control" required>
+
+                    <label for="email" class="form-label">Email Address</label>
+                    <input name="email" type="email" id="email" class="form-control" required>
+
+                    <label for="phoneNum" class="form-label">Telephone</label>
+                    <input name="phoneNum" type="tel" id="phoneNum" class="form-control" required>
+
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+
+                    <div class="form-group text-center mt-2">
+                        <p class="form-control-plaintext">Already Registered? <span><a class="signup-link" href="/signin">Sign in</a></span></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+<!--
+</div>
+</body>
+</html>
+-->

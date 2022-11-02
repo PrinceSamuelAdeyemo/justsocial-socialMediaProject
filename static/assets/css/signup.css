@@ -1,0 +1,10 @@
+.main-container{
+    display: flex
+}
+
+.centered-div{
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    margin: auto;
+    width: 80%;
+}

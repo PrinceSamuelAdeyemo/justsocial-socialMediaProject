@@ -1,0 +1,135 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap/css/bootstrap.css' %}">
+<script src="{% static 'assets/css/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'assets/css/profile.css'%}">
+<link rel="stylesheet" href="{% static 'assets/css/homepage.css'%}">
+
+{% endblock %}
+
+{% block content %}
+<div class="div-profile">
+    <div class="top-profile bg-green">
+        <div class="div-cover-photo">
+            <img class="cover-photo" src="{% static 'assets/the%20houses/WhatsApp%20Image%202022-09-07%20at%2011.05.01%20AM.jpeg' %}" alt="">
+        </div>
+        <div class="profile-content">
+            <div class="profile-minicontent">
+                <img class="profileImg bg-light" src="{{user_profile.profileImg.url}}" alt="">
+            </div>
+
+            <div class="post-followers-more">
+                <a class="backtohome" href="/">Home</a>
+                <div class="float-end">
+                    <form class="form-horizontal" class="form" action="/follow" method="POST">
+                        {% csrf_token %}
+                        {% if user_profile.user.username == user.username %}
+                        <a class="white-bold-text btn btn-info" href="/settings">Update profile</a>
+                        {% endif %}
+                        {% if user_posts_length == 0 %}
+                        <a class="white-bold-text" href="">No Post yet</a>
+                        {% elif user_posts_length == 1 %}
+                        <a class="white-bold-text" href="">1 Post</a>
+                        {% else %}
+                        <a class="white-bold-text" href="">{{user_posts_length}} Posts</a>
+                        {% endif %}
+
+                        {% if user_followers == 0 or user_followers == 1 %}
+                        <a class="white-bold-text" name="followers" type="submit">{{user_followers}} Follower</a>
+                        {% else %}
+                        <a class="white-bold-text" name="followers" type="submit">{{user_followers}} Followers</a>
+                        {% endif %}
+                        <a class="white-bold-text" href="">{{user_following}} Following</a>
+                        <input type="hidden" value="{{user_profile.user.username}}" name="pageowner">
+                        <input type="hidden" value={{user.username}} name = "follower">
+                        {% if user.username == user_profile.user.username%}
+                        {% else %}
+                        <button class="btn py-1 px-3 text-white fw-bold follow me-5" name="follow" type="submit">{{button_text}}</button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            <a class="displayusername" href="#">@{{user_profile.user.username}}</a>
+        </div>
+    </div>
+
+    <div class="bg-light pb-1">
+        <div class="div-bio">
+            <div class="div-bio-text">
+                <p><strong>About me</strong></p>
+                <p class="bio">{{user_profile.bio}}</p>
+            </div>
+        </div>
+
+        <div class="div-previous-photos">
+            
+            {% for post in user_posts %}
+            {% if post.postImage.url != None %}
+            
+                <div class="div-previous-photo">
+                    <a href="{{post.postImage.url}}" alt=""><img class="previous-photo" src="{{post.postImage.url}}" alt=""></a>
+                </div>
+
+            {% else %}
+            pass
+            {% endif%}
+            {% endfor%}
+
+            <!--
+            <div class="div-previous-photo">
+                <img class="previous-photo" src="{% static 'assets/the%20houses/images%20(8).jfif' %}" alt="">
+            </div>
+            <div class="div-previous-photo">
+                <img class="previous-photo" src="{% static 'assets/the%20houses/images%20(8).jfif' %}" alt="">
+            </div>
+
+            <div class="div-previous-photo">
+                <img class="previous-photo" src="{% static 'assets/the%20houses/images%20(8).jfif' %}" alt="">
+            </div>
+
+            <div class="div-previous-photo">
+                <img class="previous-photo" src="{% static 'assets/the%20houses/images%20(8).jfif' %}" alt="">
+            </div>
+        -->
+            <div class="clear">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="post-contents-container m-auto">
+        
+        {% for post in user_posts reversed%}
+        
+
+        <div class="w-50 for-border m-auto">
+            <div class="profileaddress-post for-border p-2">
+                <a class="nolink" href="/profile/{{post.username}}"><img class="profilepost-image float-start me-2 rounded-circle" src=""><span><h6 class="p-2 pb-0 post-author">{{post.username}}</h6></span></a>
+                
+            </div>
+            <div class="post-content for-border px-2">
+                <p>{{post.caption}}</p>
+                {% if post.postImage.url is not None %}
+                    <a href="{{post.postImage.url}}" ><img class="img-fluid w-100" src="{{post.postImage.url}}"></a>
+                {% else %}
+                {% endif %}
+            </div>
+            <div class="reactions p-2">
+                <a href="/like-post?post_id={{post.id}}" class="btn"><img class="">👍</img></a>
+                {% if post.noOfLikes == 0 %}
+                <p></p>
+                {% elif post.noOfLikes == 1 %}
+                <p>Liked by {{post.noOfLikes}} person</p>
+                {% else %}
+                <p>Liked by {{post.noOfLikes}} people</p>
+                {% endif %}
+            </div>
+            </div>
+        
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}

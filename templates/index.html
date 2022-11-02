@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Index</title>
+        <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    </head>
+    
+    <body>
+        <form action = "" method ="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Hello, World!</h1>
+            <img src="{{ regform.profileImg.url }}" alt="">
+            <!--
+            <p>Username</p>
+            {{ regform.username }} <br>
+            
+            <p>Password</p>
+            {{ regform.password }} <br>
+            
+            -->
+
+            {{ regform.as_p }}
+            <img style = "width: 100px; height: 100px;" src="{{ regform.profileImg.url }}" alt="">
+
+            <button type="submit" value="submit">Submit</button>
+        <form>
+    </body>
+
+</html>

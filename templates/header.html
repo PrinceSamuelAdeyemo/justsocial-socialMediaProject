@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Samuel Adeyemo">
+    <meta name="application-name" content="Sign in website">
+    <meta name="keyword" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'assets/css/settings.css'%}">
+   
+{% block head%}
+
+{% endblock %}
+</head>
+
+<body>
+
+<div class="container-fluid overflow-hidden allbody">
+    <nav class="navbar nav navbar-expand-md navbar-light m-0 p-0" role="navigation">
+        <div class="container-fluid bg-white">
+            <a class="navbar-brand bg-white" href="/"><h3>Just Social</h3></a>
+            <button class="navbar-toggler btn" type="button" data-bs-target="#navbar_links" data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse row collapse d-md-flex" id="navbar_links">
+                <ul class="navbar-nav justify-content-end col-md-8">
+                    <li class="nav-item w-75">
+                        <form class="form" role="form" method="POST" action="">
+                            {% csrf_token %}
+                            <input name="searchUsername" class="search_bar float-end" type="search" placeholder="Search for creators, inspirations and projects">
+                            <button class="btn btn-default float-end" type="submit"></button>
+                        </form>
+                    </li>
+                </ul>
+                <div class="col-md-4">
+                    <ul class="navbar-nav float-end">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link btn dropdown-toggle" data-bs-toggle="dropdown" href="">Post <span class="caret"></span></a>
+                            <div class="dropdown-menu">   
+                                <form class="dropdown-item form-horizontal" role="form" method = "POST" action="/uploadpost" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="">
+                                        <textarea name="caption" class="form-control"></textarea>
+                                        <input name="postImage" class="form-control" type="file">
+                                        <button type="submit">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="nav-item float-start">
+                            <a class="nav-link btn" href="/profile/{{user_profile.user.username}}">
+                                <img class="img-fluid toprightimage-display m-0" src="{{user_profile.profileImg.url}}">
+                            </a>
+                        </li>
+                        
+
+                        <li class="nav-item float-start">
+                            <a class="nav-link btn" href="/logout">Logout</a>
+                        </li>
+
+                        {% else %}
+                        <li class="nav-item float-start">
+                            <a class="nav-link btn" href="/signin"><b>Sign in</b></a>
+                        </li>
+                        {% endif %}
+                        
+                        
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+
+</div>
+</body>
+
+<footer>
+
+</footer>
+
+</html>
