@@ -320,3 +320,10 @@ def follow(request):
     else:
         return redirect('/')
     
+    
+def search_profile(request, pk):
+    if request.method == 'POST':
+        user_object = User.objects.filter(username = pk)
+        profiles = Profile.objects.filter(user = user_object)
+        if profiles.exists()
+        return HttpResponse('Exists!')
