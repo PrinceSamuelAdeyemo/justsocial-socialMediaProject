@@ -82,7 +82,13 @@
                             </a>
                         </div>
                         <div class="post-content for-border px-2">
-                            <p>{{post.caption}}</p>
+                            
+                            {% if post.caption|length >= 100 %}
+                            <p class="d-inline me-1">{{post.caption|escape|linebreaksbr|truncatechars_html:100}}</p>
+                            <button class="btn btn-default d-inline p-0 mb-1"><i>See more</i></button>
+                            {% else %}
+                            <p class="d-inline">{{post.caption|escape|linebreaks}}</p>
+                            {% endif %}
                             {% if post.postImage.url is not None%}
                             <a href="{{post.postImage.url}}" alt="No profile image">
                                 <img class="img-fluid post-image" src="{{post.postImage.url}}">
