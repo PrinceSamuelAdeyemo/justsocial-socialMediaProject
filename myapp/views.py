@@ -8,6 +8,8 @@ from django.contrib.auth.models import User, auth
 from django.core import mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from itertools import chain
+from django.views import View
 
 # Create your views here.
 """
@@ -183,21 +185,28 @@ def header(request):
             return render(request, 'header.html', context_dict)
         
 '''
+'''
 @login_required(login_url='/signin')
+
 def logout(request):
     
     auth.logout(request)
     return redirect('signin')
-    '''
+    
     if request == 'POST':
         auth.logout(request)
         return redirect('signin')
         
     else:
         pass
+
 '''
 
 
+class Logout(View):
+    def get(self, request):
+        auth.logout(self.request)
+        return redirect('signin')
 
 
 @login_required(login_url='/signin')
@@ -320,3 +329,67 @@ def follow(request):
     else:
         return redirect('/')
     
+
+class SearchProfile(View):
+    def post(self, request):
+        pk = request.POST["searchUsername"].lower()
+        try:
+            user_object = User.objects.filter(username__icontains = pk).order_by("username")
+            if not user_object.exists():
+                return HttpResponse("Doesn't exist!")
+            else:
+                user_objects_list = []
+                profile_lists = []
+                for user in user_object:
+                    user_objects_list.append(user.id)
+                    
+                for each in user_objects_list:
+                    profile_list = Profile.objects.filter(id_user = each)
+                    profile_lists.append(profile_list)
+                    
+                profile_lists = [item for each_profile_object in profile_lists for item in each_profile_object]
+                context = {'search': profile_lists}
+            return render(request, 'search.html', context=context)
+        except User.DoesNotExist:
+            return HttpResponse("Doesn't exist!")
+        
+'''
+def search_profile(request):
+    if request.method == 'POST':
+        pk = request.POST["searchUsername"].lower()
+        try:
+            user_object = User.objects.filter(username__icontains = pk).order_by("username")
+            if not user_object.exists():
+                return HttpResponse("Doesn't exist!")
+            else:
+                user_objects_list = []
+                profile_lists = []
+                for user in user_object:
+                    user_objects_list.append(user.id)
+                    
+                for each in user_objects_list:
+                    profile_list = Profile.objects.filter(id_user = each)
+                    profile_lists.append(profile_list)
+                    
+                profile_lists = [item for each_profile_object in profile_lists for item in each_profile_object]
+                context = {'search': profile_lists}
+            return render(request, 'search.html', context=context)
+        except User.DoesNotExist:
+            return HttpResponse("Doesn't exist!")
+        
+'''       
+'''  
+            
+            for each in emp:
+                    profile_list = Profile.objects.filter(user = each)
+                    profile_lists.append(profile_list)
+                    
+                allprofile_lists = list(chain(*profile_lists))
+                
+                    
+                print(allprofile_lists)
+                
+                
+                
+                list(chain(*profile_lists))
+                '''
