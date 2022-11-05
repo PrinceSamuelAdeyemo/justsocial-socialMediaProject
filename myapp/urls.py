@@ -12,7 +12,7 @@ urlpatterns = [
     path('settings', views.settings, name='settings'),
     # path('profile/<str:pk>', views.profile, name = 'profile')
     # path('header', views.header, name='header'),
-    #path('logout', views.logout, name='logout'),
+    # path('logout', views.logout, name='logout'),
     path('logout', Logout.as_view()),
     path('profile/<str:pk>', views.profile, name = 'profile'),
     

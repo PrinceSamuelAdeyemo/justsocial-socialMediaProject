@@ -66,7 +66,7 @@
 
         <div class="div-previous-photos">
             
-            {% for post in user_posts %}
+            {% for post in user_posts|slice:"5" %}
             {% if post.postImage.url != None %}
             
                 <div class="div-previous-photo">
@@ -113,7 +113,7 @@
             <div class="post-content for-border px-2">
                 <p>{{post.caption}}</p>
                 {% if post.postImage.url is not None %}
-                    <a href="{{post.postImage.url}}" ><img class="img-fluid w-100" src="{{post.postImage.url}}"></a>
+                    <a href="{{post.postImage.url}}" ><img class="img-fluid post-image w-100" src="{{post.postImage.url}}"></a>
                 {% else %}
                 {% endif %}
             </div>

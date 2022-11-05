@@ -230,14 +230,14 @@ def uploadpost(request):
             
         else:
             username = request.user.username
-            first_name = request.user.first_name
-            last_name = request.user.last_name
+            first_name = request.user.first_name.capitalize()
+            last_name = request.user.last_name.capitalize()
             caption = request.POST["caption"]
             postImage = None
             
+            name = (first_name + ' ' + last_name).title()
             
-            
-            uploadedPost = Post.objects.create(username = username, caption = caption, postImage = postImage)
+            uploadedPost = Post.objects.create(username = username, name = name, caption = caption, postImage = postImage)
             uploadedPost.save()
             
             return redirect('/')

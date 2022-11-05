@@ -14,10 +14,12 @@
 
 
 {% block content%}
-<div>
+<div class="p-5">
     {% for name in search %}
-<div>
-    <p>{{name|lower}}</p>
+<div class="bg-info m-1 m-auto">
+    <p><a href="/profile/{{name}}">{{name|lower}}</a></p>
+    <p>{{name.first_name}}</p>
+    <p>{{name.last_name}}</p>
 </div>
     {% endfor %}
 </div>
