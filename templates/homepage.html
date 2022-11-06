@@ -102,11 +102,10 @@
                             <a href="/like-post?post_id={{post.id}}" class="btn"><img class="">👍</img></a>
                             {% if post.noOfLikes == 0 %}
                             <p></p>
-                            {% elif post.noOfLikes == 1 %}
-                            <p>Liked by {{post.noOfLikes}} person</p>
                             {% else %}
-                            <p>Liked by {{post.noOfLikes}} people</p>
+                            <p>Liked by {{post.noOfLikes}} {{post.noOfLikes|pluralize:"person, people"}}</p>
                             {% endif %}
+                            
                         </div>
                     </div>
                     {% endfor %}
